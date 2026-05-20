@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+todo.md
+*.srt
+*.html
+*.pdf
