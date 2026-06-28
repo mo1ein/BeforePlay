@@ -218,6 +218,9 @@ __marimo__/
 .streamlit/secrets.toml
 
 todo.md
+plan.md
 *.srt
 *.html
 *.pdf
+.media_cache/
+.translation_cache.json

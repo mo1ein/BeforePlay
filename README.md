@@ -20,14 +20,6 @@ uv pip install -r requirements.txt
 uv run main.py
 ```
 
-### pip
-```bash
-python -m venv venv
-source venv/bin/activate
-pip install -r requrements.txt
-python main.py
-```
-
 ## Usage
 Basic command:
 
