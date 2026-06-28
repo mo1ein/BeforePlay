@@ -45,6 +45,23 @@ To export words as Anki flashcards with pronunciation audio, you need:
 
    > **Note:** Without mplayer, audio pronunciation will not play in Anki cards.
 
+
+### Anki Flashcards
+
+When exporting with `--anki`, each flashcard includes:
+
+- **Front:** The English word
+- **Back:** Translation, pronunciation audio (auto-play), and an image of the word
+
+Pronunciation audio is sourced from Wikimedia Commons (native recordings) with Google TTS as fallback. Images come from Wiktionary, Wikipedia, and Wikimedia Commons.
+
+Media is cached in `.media_cache/` — subsequent runs with the same words are instant.
+
+After generating the `.apkg` file, you can import it into Anki from the bottom with *Import file*.
+
+![BeforePlay pipeline](./anki.png)
+
+
 ## Usage
 
 Basic command — extract words from an SRT file, filter by B2 level, translate to Persian (default), and export to Anki:
@@ -99,21 +116,7 @@ uv run main.py -i book.pdf -c cefr.csv -l B1 --pages 10,20,30 --csv pages.csv
 uv run main.py -i book.pdf -c cefr.csv -l B1 --pages 1-5,50 --anki pages.apkg
 ```
 
-## Anki Flashcards
-
-When exporting with `--anki`, each flashcard includes:
-
-- **Front:** The English word
-- **Back:** Translation, pronunciation audio (auto-play), and an image of the word
-
-Pronunciation audio is sourced from Wikimedia Commons (native recordings) with Google TTS as fallback. Images come from Wiktionary, Wikipedia, and Wikimedia Commons.
-
-Media is cached in `.media_cache/` — subsequent runs with the same words are instant.
-
-After generating the `.apkg` file, you can import it into Anki from the bottom with *Import file*.
-
-![BeforePlay pipeline](./anki.png)
-
+![sample output](./html_output.png)
 
 ## Stopwords
 
