@@ -1,17 +1,17 @@
-# Lexisexy
+# BeforePlay
 
 I'm learning English by watching movies, but constantly pausing to look up unfamiliar words breaks the experience. So the idea came to me: extract the vocabulary from a movie's subtitles beforehand, learn the important words at my level, then watch with confidence.
-Lexisexy does exactly that — it reads **PDF** and **SRT** files, filters words by **CEFR** level, translates them into your language, and exports everything to **CSV, HTML, PDF, or Anki flashcard decks** with pronunciation audio and images.
+BeforePlay does exactly that — it reads **PDF** and **SRT** files, filters words by **CEFR** level, translates them into your language, and exports everything to **CSV, HTML, PDF, or Anki flashcard decks** with pronunciation audio and images.
 
-![Lexisexy pipeline](./diagram.svg)
+![BeforePlay pipeline](./diagram.svg)
 
 ## Installation
 
 Clone the repository and navigate to the project folder.
 
 ```bash
-git clone https://github.com/mo1ein/lexisexy.git
-cd lexisexy
+git clone https://github.com/mo1ein/BeforePlay.git
+cd BeforePlay
 uv run main.py
 ```
 
@@ -112,7 +112,7 @@ Media is cached in `.media_cache/` — subsequent runs with the same words are i
 
 After generating the `.apkg` file, you can import it into Anki from the bottom with *Import file*.
 
-![Lexisexy pipeline](./anki.png)
+![BeforePlay pipeline](./anki.png)
 
 
 ## Stopwords
