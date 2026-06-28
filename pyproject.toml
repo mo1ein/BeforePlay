@@ -1,0 +1,31 @@
+[project]
+name = "lexisexy"
+version = "0.1.0"
+description = "Extract words from PDFs and SRT files, normalize, filter by CEFR level, translate and export."
+requires-python = ">=3.12"
+dependencies = [
+    "pypdf>=4.0",
+    "pdfkit>=1.0",
+    "deep-translator>=1.11",
+    "nltk>=3.8",
+    "requests>=2.31",
+    "rich",
+    "genanki>=0.13.1",
+    "pytest>=9.1.1",
+]
+
+[project.optional-dependencies]
+pdf = ["pdfkit>=1.0"]
+anki = ["genanki>=0.13"]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+lexisexy = "main:main"
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
