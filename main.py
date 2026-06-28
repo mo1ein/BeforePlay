@@ -251,7 +251,7 @@ class WordTranslator:
 
     @staticmethod
     def _save_cache(cache: dict[str, str]) -> None:
-        import tempfile
+
         tmp = WordTranslator._CACHE_PATH.with_suffix(".tmp")
         tmp.write_text(json.dumps(cache, ensure_ascii=False))
         tmp.rename(WordTranslator._CACHE_PATH)
@@ -298,8 +298,12 @@ class WordTranslator:
         async def run_all():
             semaphore = asyncio.Semaphore(self._CONCURRENT_LIMIT)
 
-            with _create_progress(f"→ {self.target_lang}", len(to_translate)) as progress:
-                task_id = progress.add_task(f"→ {self.target_lang}", total=len(to_translate))
+            with _create_progress(
+                f"→ {self.target_lang}", len(to_translate)
+            ) as progress:
+                task_id = progress.add_task(
+                    f"→ {self.target_lang}", total=len(to_translate)
+                )
 
                 tasks = [
                     self._translate_word(w, semaphore, progress, task_id)
@@ -536,7 +540,9 @@ class MediaCache:
     @staticmethod
     def _download(url: str, dest: Path) -> Optional[bytes]:
         try:
-            resp = requests.get(url, timeout=10, headers={"User-Agent": "Lexisexy/1.0"})
+            resp = requests.get(
+                url, timeout=10, headers={"User-Agent": "BeforePlay/1.0"}
+            )
             if resp.status_code == 200:
                 dest.write_bytes(resp.content)
                 return resp.content
@@ -557,7 +563,7 @@ class WiktionaryMedia:
     _GOOGLE_TTS_URL = (
         "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q={}"
     )
-    _HEADERS = {"User-Agent": "Lexisexy/1.0 (vocab tool; contact: github)"}
+    _HEADERS = {"User-Agent": "BeforePlay/1.0 (vocab tool; contact: github)"}
     _local = threading.local()
 
     @classmethod
@@ -890,7 +896,7 @@ class AnkiExporter:
 
         return genanki.Model(
             AnkiExporter._MODEL_ID,
-            "Lexisexy Card",
+            "BeforePlay Card",
             fields=[
                 {"name": "Word"},
                 {"name": "Translation"},
@@ -919,7 +925,7 @@ class AnkiExporter:
         import genanki
 
         model = AnkiExporter._get_model()
-        deck = genanki.Deck(AnkiExporter._DECK_ID, "Lexisexy Words")
+        deck = genanki.Deck(AnkiExporter._DECK_ID, "BeforePlay Words")
 
         media_data: dict[str, tuple[Optional[bytes], Optional[bytes]]] = {}
         if with_media:
@@ -1021,7 +1027,9 @@ class WordPipeline:
         # 3. Filter by CEFR level if requested
         if target_level and self.cefr:
             word_counts = self.cefr.filter_words(word_counts, target_level)
-            logger.info("Filtered to %d words at level %s", len(word_counts), target_level)
+            logger.info(
+                "Filtered to %d words at level %s", len(word_counts), target_level
+            )
 
         if not word_counts:
             logger.warning("No words to export.")
