@@ -110,7 +110,7 @@ Pronunciation audio is sourced from Wikimedia Commons (native recordings) with G
 
 Media is cached in `.media_cache/` — subsequent runs with the same words are instant.
 
-After generating the `.apkg` file, you can import it into Anki from the bottom with *Import files*.
+After generating the `.apkg` file, you can import it into Anki from the bottom with *Import file*.
 
 ![Lexisexy pipeline](./anki.png)
 
